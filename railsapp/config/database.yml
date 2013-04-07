@@ -15,10 +15,20 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: railsapp_development
+  database: bitcointip_development
   pool: 5
-  username: railsapp
-  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: bitcointip_test
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: bitcointip_production
+  pool: 5
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
