@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :reddit_user_name, :bitcoin_address, :balance, :total_gift_amount
+  attr_accessor :reddit_user_name, :uuid, :bitcoin_address, :balance, :total_gift_amount
   validates :reddit_user_name, presence: true, uniqueness: true
 
   after_validation :check_user_names
@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
     end
 
     def post_save
-      #CommunicationWrapper.send_message(self.uuid, self.channel)
+      #CommunicationWrapper.send_account_creation_message(self.uuid)
     end
 end
