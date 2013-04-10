@@ -1,3 +1,18 @@
 class User < ActiveRecord::Base
-  attr_accessible :user_name, :address, :balance, :total_gift_amount
+  attr_accessor :reddit_user_name, :bitcoin_address, :balance, :total_gift_amount
+  validates :reddit_user_name, presence: true, uniqueness: true
+
+  after_validation :check_user_names
+  before_save :pre_save
+  after_save :post_save
+
+  private
+    def pre_save
+      self.uuid = UUID::generate
+      #self.address = BitcoinWrapper.create_address
+    end
+
+    def post_save
+      #CommunicationWrapper.send_message(self.uuid, self.channel)
+    end
 end
