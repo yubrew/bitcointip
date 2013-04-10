@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
-gem 'snoo' # reddit api
+gem 'snoo', git: 'git://github.com/yubrew/snoo.git', branch: 'development' # reddit api
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
