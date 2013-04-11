@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :reddit_user_name, :uuid, :bitcoin_address, :balance, :total_gift_amount
+  attr_accessible :reddit_user_name, :uuid, :bitcoin_address, :balance, :total_gift_amount
   validates :reddit_user_name, presence: true, uniqueness: true
 
   before_save :pre_save
