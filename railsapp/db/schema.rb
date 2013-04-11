@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(:version => 20130407183105) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "user_name"
-    t.string   "address"
+    t.string   "reddit_user_name"
+    t.string   "uuid"
+    t.string   "bitcoin_address"
     t.decimal  "balance"
     t.decimal  "total_gift_amount"
     t.datetime "created_at",        :null => false
