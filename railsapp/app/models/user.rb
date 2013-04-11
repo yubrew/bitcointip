@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   attr_accessor :reddit_user_name, :uuid, :bitcoin_address, :balance, :total_gift_amount
   validates :reddit_user_name, presence: true, uniqueness: true
 
-  after_validation :check_user_names
   before_save :pre_save
   after_save :post_save
 
