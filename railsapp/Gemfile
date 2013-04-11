@@ -2,10 +2,17 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'pg'
+# Servers and Deployment -------------
+gem 'whenever'      # Cronjobs
+gem 'airbrake'      # Exception handling
 
-gem 'uuid'
-gem 'snoo', git: 'git://github.com/yubrew/snoo.git', branch: 'development' # reddit api
+# Databases --------------------------
+gem 'pg'
+gem "rails3_acts_as_paranoid" # Override default delete behavior
+
+# Frontend ---------------------------
+
+gem 'jquery-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -13,18 +20,50 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+# Backend ----------------------------
 
+# Inherited resources to simplify Controller logic
+gem 'inherited_resources'
+gem 'has_scope'
+
+gem 'uuid'
+gem 'dotenv-rails' #sets .env variables
+
+# Tableless models
+gem 'active_attr'
+
+# Populate databases in development
+group :development do
+  gem 'faker'
+  gem 'populator'
+  gem 'capistrano' # Deploy with Capistrano
+  gem 'capistrano_colors'
+end
+  
+# APIs -------------------------------
+gem 'snoo', git: 'git://github.com/yubrew/snoo.git', branch: 'development' # reddit api
+
+# Rails/Ruby Console -----------------
+
+# Syntax highlighting for IRB & rails console
+gem 'wirble'  
+gem 'awesome_print'
+
+# Include Pry because it is used instead of IRB for rails c
+gem 'pry-rails'
+gem 'pry-doc'
+gem 'pry-clipboard'
+
+# Development ------------------------
 
 group :development do
-  gem 'commands'
+  gem 'rails_best_practices'
+  gem 'commands' # do rails g and rake tasks in console
 end
 
-group :test, :development do
+# Testing ----------------------------
+group :test do
   gem "rspec-rails", "~> 2.0"
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'dotenv-rails'
 end
 
 # To use ActiveModel has_secure_password
